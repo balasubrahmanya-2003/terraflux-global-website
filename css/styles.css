@@ -1,0 +1,87 @@
+/*
+  Terraflux Global Ventures — Design system and page styles
+  - No frameworks, vanilla CSS
+  - Colors: Elephant Black, Metallic Gold, Navy Blue, Off-White
+*/
+
+:root{
+  --bg: #0D0D0D; /* Elephant Black */
+  --gold: #D4AF37; /* Metallic Gold */
+  --navy: #1B365D; /* Navy Blue */
+  --muted: #EDEDED; /* Off-White fallback */
+  --glass: rgba(27,54,93,0.14);
+  --glass-border: rgba(212,175,55,0.12);
+  --max-width: 1200px;
+}
+
+/* Global resets and base */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.5;background:var(--bg);color:var(--muted);-webkit-font-smoothing:antialiased}
+
+.container{max-width:var(--max-width);margin:0 auto;padding:2rem}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,rgba(13,13,13,0.85),rgba(13,13,13,0.6));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.02)}
+.nav-row{display:flex;align-items:center;justify-content:space-between}
+.brand{color:var(--gold);font-weight:700;text-decoration:none;font-size:1.25rem}
+.main-nav a{color:var(--muted);text-decoration:none;margin-left:1.25rem;padding:0.5rem}
+.main-nav a.cta{background:transparent;border:2px solid rgba(212,175,55,0.07);padding:0.5rem 0.8rem;border-radius:6px;color:var(--gold)}
+.menu-toggle{display:none;background:none;border:0;color:var(--muted);font-size:1.25rem}
+
+/* Hero */
+.hero{position:relative;height:80vh;min-height:520px;display:flex;align-items:center;color:var(--muted);overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:translateZ(0);will-change:transform;filter:brightness(0.45);}
+.hero-inner{position:relative;z-index:2}
+.hero-title{color:var(--gold);font-size: clamp(2rem, 5vw, 4rem);margin:0 0 0.5rem;font-weight:800}
+.hero-sub{color:#f3f5f8;max-width:60%;margin:0 0 1.5rem}
+.hero-cta .btn{font-weight:700}
+
+/* Buttons */
+.btn{display:inline-block;padding:0.85rem 1.2rem;border-radius:8px;text-decoration:none;color:var(--bg);background:rgba(255,255,255,0.06);transition:transform .18s ease,box-shadow .18s ease}
+.btn.gold{background:linear-gradient(180deg,var(--gold),#b38e2d);color:var(--bg);box-shadow:0 6px 18px rgba(212,175,55,0.12)}
+.btn.gold:hover{transform:scale(1.03);box-shadow:0 12px 30px rgba(212,175,55,0.22)}
+
+/* Cards glassmorphism */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.25rem}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid var(--glass-border);padding:1.25rem;border-radius:12px;color:var(--muted)}
+
+/* Sections */
+section{padding:3rem 0}
+h2{color:var(--gold);margin-top:0}
+
+/* Reveal animation (fade-in-up) */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 1.2s cubic-bezier(.2,.9,.2,1),transform 1.2s cubic-bezier(.2,.9,.2,1)}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* Gallery */
+.gallery-window{overflow:hidden;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:linear-gradient(180deg,rgba(11,11,11,0.6),rgba(255,255,255,0.02));}
+.gallery-track{display:flex;gap:0;transition:transform .6s cubic-bezier(.2,.9,.2,1);will-change:transform}
+.gallery-item{flex:0 0 100%;min-width:100%}
+.gallery-item img{width:100%;height:360px;object-fit:cover;display:block}
+.gallery-controls{display:flex;gap:0.5rem;justify-content:center;margin-top:0.75rem}
+.gallery-next,.gallery-prev{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.03);padding:0.5rem 0.8rem;border-radius:6px;color:var(--muted)}
+
+/* Footer */
+.site-footer{border-top:1px solid rgba(255,255,255,0.03);padding:1.5rem 0;margin-top:3rem}
+.footer-row{display:flex;justify-content:space-between;gap:1rem}
+.site-footer a{color:var(--muted);text-decoration:none}
+
+/* Responsive tweaks */
+@media (max-width:900px){
+  .hero-sub{max-width:100%}
+  .hero{height:62vh}
+  .menu-toggle{display:block}
+  .main-nav{display:none;position:absolute;top:64px;right:16px;background:rgba(13,13,13,0.98);padding:0.75rem;border-radius:8px}
+  .main-nav a{display:block;margin:0;padding:0.5rem 1rem}
+  .hero-title{font-size:2rem}
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce){
+  .reveal{transition:none;opacity:1;transform:none}
+  .gallery-track{transition:none}
+}
+
+/* Simple utility */
+.contact-panel input,.contact-panel textarea{width:100%;padding:0.6rem;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted);margin-bottom:0.75rem}
