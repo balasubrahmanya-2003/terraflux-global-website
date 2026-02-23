@@ -10,18 +10,6 @@
   --dark:#0b0b0f;
 }
 
-/* Theme toggles: support light theme via .light on body */
-body.light{
-  background:#ffffff;
-  color:#0b1720;
-}
-body.light .card{background:rgba(11,23,32,0.04);}
-body.light footer{background:#f7f9fb;color:#21303b}
-/* accent swatch for header control */
-.controls{display:flex;gap:8px;align-items:center}
-.btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px;border-radius:8px;cursor:pointer}
-.accent-swatch{width:18px;height:18px;border-radius:6px;border:1px solid rgba(0,0,0,0.08);display:inline-block}
-
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
@@ -228,19 +216,12 @@ footer p{color:#777;margin-top:10px;}
 <header>
   <div class="logo">TERRAFLUX</div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="logistics.html">Logistics</a>
-    <a href="warehousing.html" style="color:var(--primary)">Warehousing</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="#">Home</a>
+    <a href="#">Logistics</a>
+    <a href="#" style="color:var(--primary)">Warehousing</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
   </nav>
-  <div class="controls">
-    <label title="Accent color">
-      <input type="color" id="accentPicker" style="display:none">
-      <span class="btn" id="accentBtn"><span class="accent-swatch" id="accentSwatch"></span></span>
-    </label>
-    <button class="btn" id="themeBtn" aria-pressed="false">Toggle</button>
-  </div>
 </header>
 
 <!-- HERO -->
@@ -343,39 +324,80 @@ counters.forEach(c=>counterObserver.observe(c));
 <!-- ================= PROCESS FLOW ================= -->
 <section style="padding:110px 8%; background:#0b0b0f;">
 
+  <!-- Section Title -->
   <h2 style="color:var(--primary); font-size:2.4rem; text-align:center; margin-bottom:80px;">
     Our Warehouse Process
   </h2>
 
+  <!-- Process Container -->
   <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:40px; text-align:center;">
 
-    <div class="process-box" style="width:200px; opacity:0; transform:translateY(60px); transition:1s;">
+    <!-- Process Step 01 -->
+    <div style="
+      width:200px;
+      opacity:0;
+      transform:translateY(-60px); /* Start from top */
+      animation:slideDown 0.8s ease forwards;
+      animation-delay:0.2s; /* First box delay */
+    ">
       <div style="font-size:2rem; color:var(--primary);">01</div>
       <h4 style="margin:15px 0;">Inbound Receiving</h4>
       <p style="color:#aaa;">Quality inspection & digital logging.</p>
     </div>
 
-    <div class="process-box" style="width:200px; opacity:0; transform:translateY(60px); transition:1s;">
+    <!-- Process Step 02 -->
+    <div style="
+      width:200px;
+      opacity:0;
+      transform:translateY(-60px);
+      animation:slideDown 0.8s ease forwards;
+      animation-delay:0.5s; /* Second box delay */
+    ">
       <div style="font-size:2rem; color:var(--primary);">02</div>
       <h4 style="margin:15px 0;">Smart Allocation</h4>
       <p style="color:#aaa;">AI-based rack optimization.</p>
     </div>
 
-    <div class="process-box" style="width:200px; opacity:0; transform:translateY(60px); transition:1s;">
+    <!-- Process Step 03 -->
+    <div style="
+      width:200px;
+      opacity:0;
+      transform:translateY(-60px);
+      animation:slideDown 0.8s ease forwards;
+      animation-delay:0.8s; /* Third box delay */
+    ">
       <div style="font-size:2rem; color:var(--primary);">03</div>
       <h4 style="margin:15px 0;">Inventory Monitoring</h4>
       <p style="color:#aaa;">Real-time analytics dashboard.</p>
     </div>
 
-    <div class="process-box" style="width:200px; opacity:0; transform:translateY(60px); transition:1s;">
+    <!-- Process Step 04 -->
+    <div style="
+      width:200px;
+      opacity:0;
+      transform:translateY(-60px);
+      animation:slideDown 0.8s ease forwards;
+      animation-delay:1.1s; /* Fourth box delay */
+    ">
       <div style="font-size:2rem; color:var(--primary);">04</div>
       <h4 style="margin:15px 0;">Dispatch & Delivery</h4>
       <p style="color:#aaa;">Optimized outbound logistics.</p>
     </div>
 
   </div>
-</section>
 
+  <!-- Animation Keyframes -->
+  <style>
+    /* Slide Down Animation */
+    @keyframes slideDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+</section>
 <script>
 const process=document.querySelectorAll('.process-box');
 
@@ -393,48 +415,190 @@ process.forEach(el=>processObserver.observe(el));
 
 <!-- ================= PARALLAX BANNER ================= -->
 <section style="
-  height:60vh;
+  height:75vh;
   background:url('https://images.unsplash.com/photo-1581092919532-7a3b4e4a7f3a?q=80&w=2070') center/cover fixed;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
   position:relative;
+  padding:40px 8%;
 ">
 
-  <div style="position:absolute; inset:0; background:rgba(0,0,0,0.7);"></div>
+  <!-- Dark Overlay -->
+  <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0.85));"></div>
 
-  <div style="position:relative; color:white;">
-    <h2 style="color:var(--primary); font-size:2.8rem; margin-bottom:20px;">
+  <!-- Content Wrapper -->
+  <div style="position:relative; color:white; max-width:1100px;">
+
+    <!-- Heading -->
+    <h2 style="
+      color:var(--primary);
+      font-size:3rem;
+      margin-bottom:25px;
+      letter-spacing:1px;
+    ">
       Future-Ready Infrastructure
     </h2>
-    <p style="max-width:700px; margin:auto; color:#ddd;">
-      Scalable warehousing designed for tomorrow’s global trade.
+
+    <!-- Premium Description -->
+    <p style="
+      max-width:750px;
+      margin:0 auto 40px auto;
+      color:#ddd;
+      font-size:1.1rem;
+      line-height:1.8;
+    ">
+      Our next-generation warehouse ecosystem integrates intelligent automation,
+      AI-driven inventory systems, climate-controlled storage, and real-time
+      tracking — ensuring unmatched efficiency, scalability, and reliability
+      for modern global supply chains.
     </p>
+
+    <!-- ================= SMALL IMAGE GALLERY ================= -->
+    <div style="
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    ">
+
+      <!-- Gallery Image 1 -->
+      <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=600"
+           style="
+             width:160px;
+             height:110px;
+             object-fit:cover;
+             border-radius:12px;
+             box-shadow:0 8px 20px rgba(0,0,0,0.5);
+             transition:0.4s;
+           "
+           onmouseover="this.style.transform='scale(1.08)'"
+           onmouseout="this.style.transform='scale(1)'">
+
+      <!-- Gallery Image 2 -->
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1?q=80&w=600"
+           style="
+             width:160px;
+             height:110px;
+             object-fit:cover;
+             border-radius:12px;
+             box-shadow:0 8px 20px rgba(0,0,0,0.5);
+             transition:0.4s;
+           "
+           onmouseover="this.style.transform='scale(1.08)'"
+           onmouseout="this.style.transform='scale(1)'">
+
+      <!-- Gallery Image 3 -->
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600"
+           style="
+             width:160px;
+             height:110px;
+             object-fit:cover;
+             border-radius:12px;
+             box-shadow:0 8px 20px rgba(0,0,0,0.5);
+             transition:0.4s;
+           "
+           onmouseover="this.style.transform='scale(1.08)'"
+           onmouseout="this.style.transform='scale(1)'">
+
+    </div>
+
   </div>
 
 </section>
-<!-- ================= PARALLAX BANNER ================= -->
+<!-- ================= SPLIT PARALLAX SECTION ================= -->
 <section style="
-  height:60vh;
+  min-height:70vh;
   background:url('https://images.unsplash.com/photo-1581092919532-7a3b4e4a7f3a?q=80&w=2070') center/cover fixed;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
   position:relative;
+  padding:60px 8%;
 ">
 
-  <div style="position:absolute; inset:0; background:rgba(0,0,0,0.7);"></div>
+  <!-- Overlay -->
+  <div style="position:absolute; inset:0; background:rgba(0,0,0,0.75);"></div>
 
-  <div style="position:relative; color:white;">
-    <h2 style="color:var(--primary); font-size:2.8rem; margin-bottom:20px;">
-      Future-Ready Infrastructure
-    </h2>
-    <p style="max-width:700px; margin:auto; color:#ddd;">
-      Scalable warehousing designed for tomorrow’s global trade.
-    </p>
+  <!-- Main Container -->
+  <div style="
+    position:relative;
+    display:flex;
+    gap:60px;
+    width:100%;
+    max-width:1200px;
+    color:white;
+    align-items:center;
+  ">
+
+    <!-- ================= LEFT SIDE DESCRIPTION ================= -->
+    <div style="flex:1;">
+
+      <h2 style="color:var(--primary); font-size:3rem; margin-bottom:25px;">
+        Future-Ready Infrastructure
+      </h2>
+
+      <p style="line-height:1.8; color:#ddd; font-size:1.1rem; margin-bottom:20px;">
+        Our intelligent warehouse ecosystem integrates AI-driven storage,
+        automated logistics, and real-time tracking to deliver precision,
+        speed, and scalability for global operations.
+      </p>
+
+      <p style="line-height:1.7; color:#bbb;">
+        Built to support tomorrow’s trade demands, our infrastructure ensures
+        operational excellence, optimized storage efficiency, and seamless
+        distribution performance.
+      </p>
+
+    </div>
+
+    <!-- ================= RIGHT SIDE 2x2 ROTATING GRID ================= -->
+    <div style="
+      flex:1;
+      width:420px;
+      height:420px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      grid-template-rows:1fr 1fr;
+      gap:10px;
+    ">
+
+      <img id="img1" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+      <img id="img2" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+      <img id="img3" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+      <img id="img4" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+
+    </div>
+
   </div>
+
+  <!-- ================= CYCLIC IMAGE ROTATION SCRIPT ================= -->
+  <script>
+    const images = [
+      "https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=600",
+      "https://images.unsplash.com/photo-1605902711622-cfb43c4437d1?q=80&w=600",
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600",
+      "https://images.unsplash.com/photo-1581091870627-3c64f6a3e93f?q=80&w=600",
+      "https://images.unsplash.com/photo-1590496793929-36417d3117de?q=80&w=600",
+      "https://images.unsplash.com/photo-1565610222536-ef125c59da2e?q=80&w=600",
+      "https://images.unsplash.com/photo-1581090700227-4c4f50f3f6b6?q=80&w=600",
+      "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=600"
+    ];
+
+    let index = 0;
+
+    function updateImages() {
+      document.getElementById("img1").src = images[index % images.length];
+      document.getElementById("img2").src = images[(index + 1) % images.length];
+      document.getElementById("img3").src = images[(index + 2) % images.length];
+      document.getElementById("img4").src = images[(index + 3) % images.length];
+      index++;
+    }
+
+    updateImages();
+    setInterval(updateImages, 3000);
+  </script>
 
 </section>
 <script>
@@ -634,10 +798,70 @@ textObserver.observe(el);
   </div>
 </section>
 
-<footer>
-  <h3>Terraflux Warehousing Division</h3>
-  <p>Enterprise-Grade Storage Solutions</p>
-  <p>© 2026 Terraflux Global Ventures</p>
+<footer style="background:#000; color:#fff; font-family:'Playfair Display', serif; padding:90px 20px 30px 20px; position:relative; overflow:hidden;">
+
+  <!-- ================= GOLD DIVIDER ================= -->
+  <div style="height:2px; width:100%; background:linear-gradient(90deg, transparent, #c9a227, transparent); margin-bottom:70px;"></div>
+
+  <div style="max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:50px;">
+
+    <!-- ================= COMPANY INFO ================= -->
+    <div style="flex:1; min-width:280px;">
+      <h2 style="font-size:28px; letter-spacing:2px; color:#c9a227; margin-bottom:15px;">
+        TERRAFLUX GLOBAL VENTURES
+      </h2>
+
+      <p style="color:#aaa; line-height:1.9; font-size:15px;">
+        Terraflux Global Ventures is committed to delivering reliable,
+        future-driven solutions with operational excellence and strategic
+        vision. We focus on building strong foundations for sustainable growth
+        and global expansion.
+      </p>
+
+      <p style="color:#888; margin-top:15px; line-height:1.8; font-size:14px;">
+        We combine innovation, integrity, and intelligent execution to
+        create impactful business ecosystems.
+      </p>
+    </div>
+
+    <!-- ================= QUICK LINKS ================= -->
+    <div style="flex:1; min-width:200px;">
+      <h3 style="color:#c9a227; margin-bottom:25px;">Navigation</h3>
+      <ul style="list-style:none; padding:0; line-height:2.2; font-size:14px;">
+        <li><a href="#" style="color:#aaa; text-decoration:none;" onmouseover="this.style.color='#c9a227'" onmouseout="this.style.color='#aaa'">Home</a></li>
+        <li><a href="#" style="color:#aaa; text-decoration:none;" onmouseover="this.style.color='#c9a227'" onmouseout="this.style.color='#aaa'">About Us</a></li>
+        <li><a href="#" style="color:#aaa; text-decoration:none;" onmouseover="this.style.color='#c9a227'" onmouseout="this.style.color='#aaa'">Portfolio</a></li>
+        <li><a href="#" style="color:#aaa; text-decoration:none;" onmouseover="this.style.color='#c9a227'" onmouseout="this.style.color='#aaa'">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- ================= REGISTERED OFFICE ================= -->
+    <div style="flex:1; min-width:260px;">
+      <h3 style="color:#c9a227; margin-bottom:25px;">Registered Office</h3>
+      <p style="color:#aaa; line-height:1.9; font-size:14px;">
+        #22/23, 2nd Floor, TR Plaza Double Road<br>
+        Above Lenskart, Rajarajeshwari Nagar<br>
+        Bengaluru – 560098, India
+      </p>
+    </div>
+
+    <!-- ================= CONTACT DETAILS ================= -->
+    <div style="flex:1; min-width:260px;">
+      <h3 style="color:#c9a227; margin-bottom:25px;">Contact</h3>
+      <p style="color:#aaa; line-height:1.9; font-size:14px;">
+        📞 +91 96639 38889<br>
+        ✉ ContactUs@terrafluxgv.com<br>
+        🌐 www.terrafluxgv.com
+      </p>
+    </div>
+
+  </div>
+
+  <!-- ================= BOTTOM SECTION ================= -->
+  <div style="margin-top:70px; text-align:center; border-top:1px solid rgba(255,255,255,0.08); padding-top:25px; color:#666; font-size:13px;">
+    © 2026 Terraflux Global Ventures. All Rights Reserved.
+  </div>
+
 </footer>
 
 <!-- COLOR SWITCHER -->
@@ -670,35 +894,3 @@ reveal.forEach(el=>observer.observe(el));
 
 </body>
 </html>
-
-<script>
-  (function(){
-    const accentPicker=document.getElementById('accentPicker');
-    const accentSwatch=document.getElementById('accentSwatch');
-    const accentBtn=document.getElementById('accentBtn');
-    const themeBtn=document.getElementById('themeBtn');
-    const body=document.body;
-
-    function setAccent(c){ document.documentElement.style.setProperty('--primary', c); if(accentSwatch) accentSwatch.style.background=c; }
-    // override existing changeColor to persist
-    window.changeColor = function(color){ setAccent(color); localStorage.setItem('terra-accent', color); };
-
-    // init accent from localStorage
-    const savedAccent = localStorage.getItem('terra-accent');
-    if(savedAccent) setAccent(savedAccent);
-    if(accentSwatch && getComputedStyle(document.documentElement).getPropertyValue('--primary')) accentSwatch.style.background = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-
-    // accent picker
-    if(accentBtn && accentPicker){ accentBtn.addEventListener('click', ()=>accentPicker.click()); accentPicker.addEventListener('input', (e)=>{ changeColor(e.target.value); }); }
-
-    // theme toggle: toggle 'light' on body to support light/dark in this template
-    const savedTheme = localStorage.getItem('terra-theme')||'dark';
-    if(savedTheme==='light') body.classList.add('light'); else body.classList.remove('light');
-    if(themeBtn) themeBtn.setAttribute('aria-pressed', savedTheme==='light');
-    if(themeBtn){ themeBtn.addEventListener('click', ()=>{
-      const isLight = body.classList.toggle('light');
-      localStorage.setItem('terra-theme', isLight? 'light' : 'dark');
-      themeBtn.setAttribute('aria-pressed', isLight);
-    }); }
-  })();
-</script>
