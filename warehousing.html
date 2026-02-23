@@ -10,6 +10,18 @@
   --dark:#0b0b0f;
 }
 
+/* Theme toggles: support light theme via .light on body */
+body.light{
+  background:#ffffff;
+  color:#0b1720;
+}
+body.light .card{background:rgba(11,23,32,0.04);}
+body.light footer{background:#f7f9fb;color:#21303b}
+/* accent swatch for header control */
+.controls{display:flex;gap:8px;align-items:center}
+.btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px;border-radius:8px;cursor:pointer}
+.accent-swatch{width:18px;height:18px;border-radius:6px;border:1px solid rgba(0,0,0,0.08);display:inline-block}
+
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
@@ -216,12 +228,19 @@ footer p{color:#777;margin-top:10px;}
 <header>
   <div class="logo">TERRAFLUX</div>
   <nav>
-    <a href="#">Home</a>
-    <a href="#">Logistics</a>
-    <a href="#" style="color:var(--primary)">Warehousing</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="logistics.html">Logistics</a>
+    <a href="warehousing.html" style="color:var(--primary)">Warehousing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </nav>
+  <div class="controls">
+    <label title="Accent color">
+      <input type="color" id="accentPicker" style="display:none">
+      <span class="btn" id="accentBtn"><span class="accent-swatch" id="accentSwatch"></span></span>
+    </label>
+    <button class="btn" id="themeBtn" aria-pressed="false">Toggle</button>
+  </div>
 </header>
 
 <!-- HERO -->
@@ -651,3 +670,35 @@ reveal.forEach(el=>observer.observe(el));
 
 </body>
 </html>
+
+<script>
+  (function(){
+    const accentPicker=document.getElementById('accentPicker');
+    const accentSwatch=document.getElementById('accentSwatch');
+    const accentBtn=document.getElementById('accentBtn');
+    const themeBtn=document.getElementById('themeBtn');
+    const body=document.body;
+
+    function setAccent(c){ document.documentElement.style.setProperty('--primary', c); if(accentSwatch) accentSwatch.style.background=c; }
+    // override existing changeColor to persist
+    window.changeColor = function(color){ setAccent(color); localStorage.setItem('terra-accent', color); };
+
+    // init accent from localStorage
+    const savedAccent = localStorage.getItem('terra-accent');
+    if(savedAccent) setAccent(savedAccent);
+    if(accentSwatch && getComputedStyle(document.documentElement).getPropertyValue('--primary')) accentSwatch.style.background = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+
+    // accent picker
+    if(accentBtn && accentPicker){ accentBtn.addEventListener('click', ()=>accentPicker.click()); accentPicker.addEventListener('input', (e)=>{ changeColor(e.target.value); }); }
+
+    // theme toggle: toggle 'light' on body to support light/dark in this template
+    const savedTheme = localStorage.getItem('terra-theme')||'dark';
+    if(savedTheme==='light') body.classList.add('light'); else body.classList.remove('light');
+    if(themeBtn) themeBtn.setAttribute('aria-pressed', savedTheme==='light');
+    if(themeBtn){ themeBtn.addEventListener('click', ()=>{
+      const isLight = body.classList.toggle('light');
+      localStorage.setItem('terra-theme', isLight? 'light' : 'dark');
+      themeBtn.setAttribute('aria-pressed', isLight);
+    }); }
+  })();
+</script>
