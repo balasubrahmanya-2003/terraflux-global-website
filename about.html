@@ -189,20 +189,48 @@ footer p{
       TERRAFLUX
     </div>
 
-    <nav id="navLinks" style="display:flex;gap:40px;">
-      <a href="index.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Home</a>
-      <a href="logistics.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Logistics</a>
-      <a href="warehousing.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Warehousing</a>
-      <a href="about.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">About</a>
-      <a href="contact.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Contact</a>
-    </nav>
+  
+
+    <header style="background:#0E1117; padding:15px 20px; position:relative;">
+
+  <!-- Top Bar -->
+  <div style="display:flex; justify-content:space-between; align-items:center; color:white;">
+    
+    <div style="font-weight:bold; font-size:18px; color:#D4AF37;">
+      TERRAFLUX
+    </div>
 
     <!-- Hamburger -->
-    <div id="hamburger" onclick="toggleMenu()" style="display:none;flex-direction:column;cursor:pointer;">
-      <span style="width:26px;height:3px;background:#D4AF37;margin:4px 0;"></span>
-      <span style="width:26px;height:3px;background:#D4AF37;margin:4px 0;"></span>
-      <span style="width:26px;height:3px;background:#D4AF37;margin:4px 0;"></span>
+    <div onclick="toggleMenu()" style="cursor:pointer; font-size:26px;">
+      ☰
     </div>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" 
+       style="display:none; flex-direction:column; margin-top:15px;">
+
+    <a href="#" style="color:white; text-decoration:none; padding:10px 0;">Home</a>
+    <a href="#" style="color:white; text-decoration:none; padding:10px 0;">Logistics</a>
+    <a href="#" style="color:white; text-decoration:none; padding:10px 0;">Warehousing</a>
+    <a href="#" style="color:white; text-decoration:none; padding:10px 0;">About</a>
+    <a href="#" style="color:white; text-decoration:none; padding:10px 0;">Contact</a>
+
+  </div>
+
+</header>
+
+<script>
+function toggleMenu(){
+  var menu = document.getElementById("mobileMenu");
+  if(menu.style.display === "flex"){
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "flex";
+  }
+}
+</script>
 
   </div>
 
@@ -294,7 +322,59 @@ window.addEventListener("load", handleResize);
 
   <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=2070" class="responsive-img">
 </section>
+<!-- ===== START COMPANY JOURNEY / CARD STYLE SECTION ===== -->
+<section style="padding:80px 20px; background:#000; color:#FFD700; font-family:'Georgia', serif; text-align:center;">
+    <h2 style="margin-bottom:50px; font-size:36px;">Our Journey</h2>
 
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; max-width:1000px; margin:0 auto;">
+
+        <!-- Card 1 -->
+        <div class="journey-card" style="background:#111; padding:30px; border-radius:15px; width:280px; box-shadow:0 8px 20px rgba(255,215,0,0.3); opacity:0; transform:translateY(50px); transition:0.8s;">
+            <h3 style="margin-bottom:15px;">2015</h3>
+            <p>Terraflux Global Ventures was founded with a vision to simplify global trade.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="journey-card" style="background:#111; padding:30px; border-radius:15px; width:280px; box-shadow:0 8px 20px rgba(255,215,0,0.3); opacity:0; transform:translateY(50px); transition:0.8s;">
+            <h3 style="margin-bottom:15px;">2017</h3>
+            <p>Expanded import-export operations to include premium spices and dry fruits.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="journey-card" style="background:#111; padding:30px; border-radius:15px; width:280px; box-shadow:0 8px 20px rgba(255,215,0,0.3); opacity:0; transform:translateY(50px); transition:0.8s;">
+            <h3 style="margin-bottom:15px;">2020</h3>
+            <p>Launched global logistics network with clients across 5 continents.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="journey-card" style="background:#111; padding:30px; border-radius:15px; width:280px; box-shadow:0 8px 20px rgba(255,215,0,0.3); opacity:0; transform:translateY(50px); transition:0.8s;">
+            <h3 style="margin-bottom:15px;">2023</h3>
+            <p>Surpassed 950K+ deliveries and 100K+ client feedback globally.</p>
+        </div>
+
+    </div>
+</section>
+<!-- ===== END COMPANY JOURNEY / CARD STYLE SECTION ===== -->
+
+<script>
+function revealCards(){
+    var cards = document.querySelectorAll('.journey-card');
+    var windowHeight = window.innerHeight;
+
+    cards.forEach(function(card, index){
+        var top = card.getBoundingClientRect().top;
+        if(top < windowHeight - 50){
+            setTimeout(function(){
+                card.style.opacity = 1;
+                card.style.transform = "translateY(0)";
+            }, index * 200); // stagger animation
+        }
+    });
+}
+
+window.addEventListener('scroll', revealCards);
+window.addEventListener('load', revealCards);
+</script>
 <!-- REGISTERED OFFICE -->
 <section class="section">
   <h2 class="title">Registered Office</h2>
