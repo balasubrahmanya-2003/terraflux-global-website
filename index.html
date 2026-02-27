@@ -179,62 +179,128 @@ font-family:Georgia,serif;">
     gap:35px;
     transition:all 0.4s ease;">
       
-      <a href="index.html" style="color:white;text-decoration:none;">Home</a>
-      <a href="logistics.html" style="color:white;text-decoration:none;">Logistics</a>
-      <a href="warehousing.html" style="color:white;text-decoration:none;">Warehousing</a>
-      <a href="about.html" style="color:white;text-decoration:none;">About</a>
-      <a href="contact.html" style="color:white;text-decoration:none;">Contact</a>
+      <a href="index.html" onclick="closeMenu()" class="nav-item">Home</a>
+      <a href="logistics.html" onclick="closeMenu()" class="nav-item">Logistics</a>
+      <a href="warehousing.html" onclick="closeMenu()" class="nav-item">Warehousing</a>
+      <a href="about.html" onclick="closeMenu()" class="nav-item">About</a>
+      <a href="contact.html" onclick="closeMenu()" class="nav-item">Contact</a>
     </nav>
 
-    <!-- HAMBURGER -->
+    <!-- HAMBURGER RIGHT CORNER -->
     <div id="hamburger" onclick="toggleMenu()" 
     style="display:none;
     flex-direction:column;
     gap:6px;
     cursor:pointer;">
-      <span style="width:25px;height:3px;background:#D4AF37;"></span>
-      <span style="width:25px;height:3px;background:#D4AF37;"></span>
-      <span style="width:25px;height:3px;background:#D4AF37;"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </div>
 
   </div>
 
-  <!-- MOBILE STYLES -->
-  <style>
-    @media (max-width: 900px) {
+<style>
 
-      #navLinks {
-        position:absolute;
-        top:100%;
-        left:0;
-        width:100%;
-        background:#0d0d0d;
-        flex-direction:column;
-        align-items:center;
-        gap:25px;
-        padding:30px 0;
-        display:none;
-      }
+/* Nav link styling */
+.nav-item {
+  color:white;
+  text-decoration:none;
+  position:relative;
+  padding:5px 0;
+  transition:color 0.3s ease;
+}
 
-      #hamburger {
-        display:flex !important;
-      }
-    }
-  </style>
+/* Gold hover effect */
+.nav-item:hover {
+  color:#D4AF37;
+}
 
-  <!-- JS -->
-  <script>
-    function toggleMenu() {
-      var nav = document.getElementById("navLinks");
-      if (nav.style.display === "flex") {
-        nav.style.display = "none";
-      } else {
-        nav.style.display = "flex";
-      }
-    }
-  </script>
+/* Animated underline */
+.nav-item::after {
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0%;
+  height:2px;
+  background:#D4AF37;
+  transition:0.3s ease;
+}
+
+.nav-item:hover::after {
+  width:100%;
+}
+
+/* Hamburger bars */
+.bar {
+  width:25px;
+  height:3px;
+  background:#D4AF37;
+  transition:0.3s;
+}
+
+/* Hamburger animation */
+.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+
+  #navLinks {
+    position:absolute;
+    top:100%;
+    right:0;
+    width:220px;
+    background:#0d0d0d;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:30px;
+    gap:20px;
+    display:none;
+    border-left:1px solid rgba(212,175,55,0.3);
+  }
+
+  #hamburger {
+    display:flex !important;
+  }
+}
+
+</style>
+
+<script>
+function toggleMenu() {
+  var nav = document.getElementById("navLinks");
+  var burger = document.getElementById("hamburger");
+
+  if (nav.style.display === "flex") {
+    nav.style.display = "none";
+    burger.classList.remove("open");
+  } else {
+    nav.style.display = "flex";
+    burger.classList.add("open");
+  }
+}
+
+function closeMenu() {
+  if (window.innerWidth <= 900) {
+    document.getElementById("navLinks").style.display = "none";
+    document.getElementById("hamburger").classList.remove("open");
+  }
+}
+</script>
 
 </header>
+
+<div style="height:90px;"></div>
 
 <!-- Spacer so content doesn't hide behind fixed header -->
 <div style="height:90px;"></div>
@@ -798,3 +864,4 @@ if(hamburger && navLinks){
 
 </body>
 </html>
+s
