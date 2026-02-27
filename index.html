@@ -758,6 +758,9 @@ if(hamburger && navLinks){
 
   /* Close menu on link click (mobile UX) */
   document.querySelectorAll(".nav-links a").forEach(link=>{
+
+
+     
       link.addEventListener("click", ()=>{
           navLinks.classList.remove("active");
           hamburger.classList.remove("active");
@@ -768,4 +771,4 @@ if(hamburger && navLinks){
 
 </body>
 </html>
->>>>>>> c7e7fe9 (fix(index.html): add defensive checks to scripts and remove stray markup; improve mobile nav)
+
