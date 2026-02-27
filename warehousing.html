@@ -227,6 +227,7 @@ align-items:center;
 z-index:1000;
 background:rgba(10,10,10,0.75);
 backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
 border-bottom:1px solid rgba(212,175,55,0.25);
 }
 
@@ -245,6 +246,7 @@ color:#D4AF37;
 font-size:1.3rem;
 letter-spacing:2px;
 font-weight:600;
+text-decoration:none;
 }
 
 nav{
@@ -257,12 +259,43 @@ transition:0.4s ease;
 nav a{
 text-decoration:none;
 color:#EDEDED;
+font-size:0.95rem;
+letter-spacing:1px;
 position:relative;
-transition:0.3s;
+transition:0.3s ease;
+padding-bottom:4px;
 }
 
-nav a:hover{color:#D4AF37;}
+/* Underline Animation */
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:0;
+height:2px;
+background:#D4AF37;
+transition:0.3s ease;
+}
 
+nav a:hover{
+color:#D4AF37;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* Active Page */
+nav a.active{
+color:#D4AF37;
+}
+
+nav a.active::after{
+width:100%;
+}
+
+/* Hamburger */
 .burger{
 display:none;
 flex-direction:column;
@@ -277,7 +310,7 @@ margin:4px 0;
 transition:0.4s;
 }
 
-/* MOBILE */
+/* Mobile */
 @media(max-width:768px){
 nav{
 position:fixed;
@@ -285,7 +318,8 @@ top:80px;
 right:-100%;
 width:260px;
 height:calc(100vh - 80px);
-background:#111;
+background:rgba(15,15,15,0.98);
+backdrop-filter:blur(20px);
 flex-direction:column;
 padding:40px 25px;
 gap:25px;
@@ -304,21 +338,26 @@ main{padding-top:80px;}
 
 <header>
   <div class="nav-container">
-    <div class="logo">TERRAFLUX</div>
 
+    <!-- LOGO -->
+    <a href="index.html" class="logo">TERRAFLUX</a>
+
+    <!-- NAVIGATION -->
     <nav id="navMenu">
-      <a href="#">Home</a>
-      <a href="#">Logistics</a>
-      <a href="#">Warehousing</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="logistics.html">Logistics</a>
+      <a href="warehousing.html">Warehousing</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
+    <!-- BURGER -->
     <div class="burger" id="burger">
       <span></span>
       <span></span>
       <span></span>
     </div>
+
   </div>
 </header>
 
@@ -329,12 +368,12 @@ const burger = document.getElementById("burger");
 const nav = document.getElementById("navMenu");
 const links = nav.querySelectorAll("a");
 
-/* Toggle menu */
+/* Toggle */
 burger.addEventListener("click", function(){
   nav.classList.toggle("active");
 });
 
-/* ✅ Auto Close When Link Clicked */
+/* Auto Close on Link Click */
 links.forEach(function(link){
   link.addEventListener("click", function(){
       if(window.innerWidth <= 768){
@@ -343,12 +382,20 @@ links.forEach(function(link){
   });
 });
 
-/* ✅ Auto Close When Clicking Outside */
+/* Close When Clicking Outside */
 document.addEventListener("click", function(e){
   if(window.innerWidth <= 768){
       if(!nav.contains(e.target) && !burger.contains(e.target)){
           nav.classList.remove("active");
       }
+  }
+});
+
+/* Active Link Highlight Based on Current Page */
+const currentPage = window.location.pathname.split("/").pop();
+links.forEach(function(link){
+  if(link.getAttribute("href") === currentPage){
+      link.classList.add("active");
   }
 });
 
