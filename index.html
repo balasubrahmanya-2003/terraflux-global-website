@@ -153,153 +153,177 @@ header{
 
 <body>
 
-<header style="position:fixed;top:0;width:100%;z-index:1000;
-background:rgba(13,13,13,0.95);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(212,175,55,0.3);
-font-family:Georgia,serif;">
+<header style="
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+background:rgba(20,20,20,0.55);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(212,175,55,0.25);
+font-family:Georgia,serif;
+">
 
-  <div style="max-width:1400px;margin:auto;
-  padding:18px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;">
+<div style="
+max-width:1400px;
+margin:auto;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+">
 
-    <!-- LOGO -->
-    <div style="color:#D4AF37;
-    font-size:1.6rem;
-    letter-spacing:2px;
-    font-weight:bold;">
-      TERRAFLUX
-    </div>
+<!-- COMPANY NAME LEFT -->
+<div style="
+color:#D4AF37;
+font-size:1.6rem;
+letter-spacing:3px;
+font-weight:bold;
+text-shadow:0 0 8px rgba(212,175,55,0.4);
+">
+TERRAFLUX
+</div>
 
-    <!-- NAV LINKS -->
-    <nav id="navLinks" style="
-    display:flex;
-    gap:35px;
-    transition:all 0.4s ease;">
-      
-      <a href="index.html" onclick="closeMenu()" class="nav-item">Home</a>
-      <a href="logistics.html" onclick="closeMenu()" class="nav-item">Logistics</a>
-      <a href="warehousing.html" onclick="closeMenu()" class="nav-item">Warehousing</a>
-      <a href="about.html" onclick="closeMenu()" class="nav-item">About</a>
-      <a href="contact.html" onclick="closeMenu()" class="nav-item">Contact</a>
-    </nav>
+<!-- NAVIGATION RIGHT -->
+<nav id="navLinks" style="
+display:flex;
+gap:40px;
+align-items:center;
+transition:all 0.4s ease;
+">
 
-    <!-- HAMBURGER RIGHT CORNER -->
-    <div id="hamburger" onclick="toggleMenu()" 
-    style="display:none;
-    flex-direction:column;
-    gap:6px;
-    cursor:pointer;">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </div>
+<a href="index.html" onclick="closeMenu()" class="nav-item">Home</a>
+<a href="logistics.html" onclick="closeMenu()" class="nav-item">Logistics</a>
+<a href="warehousing.html" onclick="closeMenu()" class="nav-item">Warehousing</a>
+<a href="about.html" onclick="closeMenu()" class="nav-item">About</a>
+<a href="contact.html" onclick="closeMenu()" class="nav-item">Contact</a>
 
-  </div>
+</nav>
+
+<!-- HAMBURGER RIGHT -->
+<div id="hamburger" onclick="toggleMenu()" style="
+display:none;
+flex-direction:column;
+gap:6px;
+cursor:pointer;
+margin-left:20px;
+">
+<span class="bar"></span>
+<span class="bar"></span>
+<span class="bar"></span>
+</div>
+
+</div>
 
 <style>
 
-/* Nav link styling */
-.nav-item {
-  color:white;
-  text-decoration:none;
-  position:relative;
-  padding:5px 0;
-  transition:color 0.3s ease;
+/* ===== NAV LINK STYLE ===== */
+.nav-item{
+color:#ffffff;
+text-decoration:none;
+font-size:0.95rem;
+letter-spacing:1px;
+position:relative;
+padding:5px 0;
+transition:all 0.3s ease;
 }
 
-/* Gold hover effect */
-.nav-item:hover {
-  color:#D4AF37;
+/* Hover glow */
+.nav-item:hover{
+color:#D4AF37;
+text-shadow:0 0 8px rgba(212,175,55,0.6);
 }
 
 /* Animated underline */
-.nav-item::after {
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-5px;
-  width:0%;
-  height:2px;
-  background:#D4AF37;
-  transition:0.3s ease;
+.nav-item::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0%;
+height:2px;
+background:linear-gradient(90deg,#D4AF37,transparent);
+transition:0.4s ease;
 }
 
-.nav-item:hover::after {
-  width:100%;
+.nav-item:hover::after{
+width:100%;
 }
 
-/* Hamburger bars */
-.bar {
-  width:25px;
-  height:3px;
-  background:#D4AF37;
-  transition:0.3s;
+/* ===== HAMBURGER ===== */
+.bar{
+width:26px;
+height:3px;
+background:#D4AF37;
+transition:0.3s ease;
 }
 
-/* Hamburger animation */
-.open .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+/* Hamburger Animation */
+.open .bar:nth-child(1){
+transform:rotate(45deg) translate(5px,5px);
 }
 
-.open .bar:nth-child(2) {
-  opacity: 0;
+.open .bar:nth-child(2){
+opacity:0;
 }
 
-.open .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+.open .bar:nth-child(3){
+transform:rotate(-45deg) translate(6px,-6px);
 }
 
-/* MOBILE */
-@media (max-width: 900px) {
+/* ===== MOBILE ===== */
+@media (max-width:900px){
 
-  #navLinks {
-    position:absolute;
-    top:100%;
-    right:0;
-    width:220px;
-    background:#0d0d0d;
-    flex-direction:column;
-    align-items:flex-start;
-    padding:30px;
-    gap:20px;
-    display:none;
-    border-left:1px solid rgba(212,175,55,0.3);
-  }
+#navLinks{
+position:absolute;
+top:100%;
+right:20px;
+width:240px;
+background:rgba(20,20,20,0.75);
+backdrop-filter:blur(20px);
+border:1px solid rgba(212,175,55,0.25);
+border-radius:12px;
+flex-direction:column;
+padding:30px;
+gap:25px;
+display:none;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
 
-  #hamburger {
-    display:flex !important;
-  }
+#hamburger{
+display:flex !important;
+}
+
 }
 
 </style>
 
 <script>
-function toggleMenu() {
-  var nav = document.getElementById("navLinks");
-  var burger = document.getElementById("hamburger");
+function toggleMenu(){
+var nav=document.getElementById("navLinks");
+var burger=document.getElementById("hamburger");
 
-  if (nav.style.display === "flex") {
-    nav.style.display = "none";
-    burger.classList.remove("open");
-  } else {
-    nav.style.display = "flex";
-    burger.classList.add("open");
-  }
+if(nav.style.display==="flex"){
+nav.style.display="none";
+burger.classList.remove("open");
+}else{
+nav.style.display="flex";
+burger.classList.add("open");
+}
 }
 
-function closeMenu() {
-  if (window.innerWidth <= 900) {
-    document.getElementById("navLinks").style.display = "none";
-    document.getElementById("hamburger").classList.remove("open");
-  }
+function closeMenu(){
+if(window.innerWidth<=900){
+document.getElementById("navLinks").style.display="none";
+document.getElementById("hamburger").classList.remove("open");
+}
 }
 </script>
 
 </header>
 
+<div style="height:95px;"></div>
 <div style="height:90px;"></div>
 
 <!-- Spacer so content doesn't hide behind fixed header -->
@@ -864,4 +888,4 @@ if(hamburger && navLinks){
 
 </body>
 </html>
-s
+
