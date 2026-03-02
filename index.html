@@ -1,132 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terraflux</title>
+
 <style>
 
-/* ===== BASE RESET ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
+body{
   font-family: Arial, Helvetica, sans-serif;
+  background:#111;
+  padding-top:80px; /* Prevent header overlap */
 }
 
 /* ===== HEADER ===== */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: transparent;
-  transition: 0.3s ease;
-  z-index: 1000;
-}
-
-header.scrolled {
-  background: #000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  background:#0a0a0a; /* elephant black */
+  z-index:1000;
+  border-bottom:1px solid rgba(212,175,55,0.2);
 }
 
 /* ===== NAV CONTAINER ===== */
-.nav-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 18px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.nav-container{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 /* ===== LOGO ===== */
-.logo {
-  color: #d4af37;
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 1px;
+.logo{
+  color:#d4af37;
+  font-size:20px;
+  font-weight:bold;
+  letter-spacing:1px;
 }
 
 /* ===== NAV LINKS ===== */
-.nav-links {
-  display: flex;
-  gap: 35px;
+.nav-links{
+  display:flex;
+  gap:35px;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 500;
-  transition: 0.3s;
+.nav-links a{
+  text-decoration:none;
+  color:#d4af37;
+  font-size:15px;
+  font-weight:500;
+  transition:0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #d4af37;
+.nav-links a:hover{
+  color:white;
 }
 
 /* ===== HAMBURGER ===== */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
 }
 
-.hamburger span {
-  width: 26px;
-  height: 3px;
-  background: white;
-  transition: 0.3s;
+.hamburger span{
+  width:25px;
+  height:3px;
+  background:#d4af37;
+  transition:0.3s ease;
 }
 
-/* Animate */
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+/* Animate Hamburger */
+.hamburger.active span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
 }
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
+.hamburger.active span:nth-child(2){
+  opacity:0;
 }
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+.hamburger.active span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 900px){
 
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #000;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 25px 0;
-    display: none;
+  .nav-links{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:#0a0a0a;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
+    padding:25px 0;
+    display:none;
   }
 
-  .nav-links.active {
-    display: flex;
+  .nav-links.active{
+    display:flex;
   }
 
-  .hamburger {
-    display: flex;
+  .hamburger{
+    display:flex;
   }
+
 }
 
 </style>
+</head>
 
+<body>
 
-<header id="header">
+<header>
   <div class="nav-container">
 
     <div class="logo">TERRAFLUX</div>
 
     <nav class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-      <a href="warehouse.html">Warehouse</a>
-      <a href="contact.html">Contact</a>
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">About</a>
+      <a href="#">Warehouse</a>
+      <a href="#">Contact</a>
     </nav>
 
     <div class="hamburger" id="hamburger">
@@ -139,14 +147,6 @@ header.scrolled {
 </header>
 
 <script>
-
-/* Scroll Effect */
-window.addEventListener("scroll", function(){
-  document.getElementById("header")
-    .classList.toggle("scrolled", window.scrollY > 50);
-});
-
-/* Toggle */
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
 
@@ -154,13 +154,7 @@ hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
   navLinks.classList.toggle("active");
 });
-
-/* Auto close */
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    navLinks.classList.remove("active");
-  });
-});
-
 </script>
+
+</body>
+</html>
