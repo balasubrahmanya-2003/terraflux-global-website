@@ -236,7 +236,16 @@ header{
 
 <div class="overlay" id="overlay"></div>
 
-
+<section class="hero">
+  <div class="hero-content">
+    <h1>Global Logistics & Infrastructure Solutions</h1>
+    <p>
+      Terraflux Global Ventures delivers reliable logistics, warehousing,
+      and infrastructure solutions with efficiency and precision worldwide.
+    </p>
+    <a href="contact.html" class="btn">Get In Touch</a>
+  </div>
+</section>
 
 <script>
 document.addEventListener("DOMContentLoaded", function(){
@@ -330,14 +339,15 @@ setInterval(nextSlide, 5000);
 // ================= END HERO SLIDE SCRIPT =================
 </script>
 <!-- ================= END HERO SECTION ================= -->
-  <!-- ================= START SERVICES SECTION (5 FLIP CARDS) ================= -->
+
+<!-- ================= START SERVICES SECTION (5 FLIP CARDS) ================= -->
 <section id="services" style="padding:80px 20px; background:#111; color:white; text-align:center;">
 
   <!-- Section Heading -->
-  <h2 style="font-size:36px; color:#d4af37; margin-bottom:40px;">Our Services</h2>
+ <center><h2 style="font-size:36px; color:#d4af37; margin-bottom:40px;">Our Services</h2>
   <p style="max-width:800px; margin:auto 0 60px 0; font-size:18px; line-height:1.6;">
     Terraflux offers a full suite of logistics solutions designed to keep your business moving efficiently and securely.
-  </p>
+  </p></center>
 
   <!-- Services Flip Grid -->
   <div class="services-grid" style="display:flex; flex-wrap:wrap; gap:30px; justify-content:center;">
@@ -473,5 +483,163 @@ flipCards.forEach(card => {
 }
 </style>
 <!-- ================= END SERVICES SECTION ================= -->
+<!-- ================= START STATISTICS SECTION WITH COUNT-UP ================= -->
+<section id="statistics" style="padding:80px 20px; background:#000; color:white;">
+
+  <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:40px;">
+
+    <!-- LEFT COLUMN: IMAGE -->
+    <div class="stat-left" style="flex:1 1 500px; min-width:280px; text-align:center; opacity:0; transform:translateY(30px); transition:all 1s ease;">
+      <img src="truck.jpg" alt="Truck Delivery" style="width:100%; border-radius:12px; object-fit:cover;">
+    </div>
+
+    <!-- RIGHT COLUMN: STATISTICS -->
+    <div class="stat-right" style="flex:1 1 500px; min-width:280px; opacity:0; transform:translateY(30px); transition:all 1s ease;">
+
+      <h2 style="font-size:36px; color:#d4af37; margin-bottom:30px; text-align:left;">Our Achievements</h2>
+
+      <!-- STAT ITEM 1 -->
+      <div class="stat-item" style="display:flex; align-items:center; gap:15px; margin-bottom:25px;">
+        <span style="font-size:36px;">🚚</span>
+        
+        <div>
+          <span class="count" data-target="120" style="font-size:28px; font-weight:bold; color:#d4af37;">0</span>
+          <p style="margin:2px 0 0 0; color:#ccc;">Deliveries / Day</p>
+        </div>
+      </div>
+
+      <!-- STAT ITEM 2 -->
+      <div class="stat-item" style="display:flex; align-items:center; gap:15px; margin-bottom:25px;">
+        <span style="font-size:36px;">🏭</span>
+        <div>
+          <span class="count" data-target="50" style="font-size:28px; font-weight:bold; color:#d4af37;">0</span>
+          <p style="margin:2px 0 0 0; color:#ccc;">Warehouses Globally</p>
+        </div>
+      </div>
+
+      <!-- STAT ITEM 3 -->
+      <div class="stat-item" style="display:flex; align-items:center; gap:15px; margin-bottom:25px;">
+        <span style="font-size:36px;">⏱️</span>
+        <div>
+          <span class="count" data-target="99" style="font-size:28px; font-weight:bold; color:#d4af37;">0</span>
+          <p style="margin:2px 0 0 0; color:#ccc;">On-Time Delivery</p>
+        </div>
+      </div>
+
+      <!-- STAT ITEM 4 -->
+      <div class="stat-item" style="display:flex; align-items:center; gap:15px; margin-bottom:25px;">
+        <span style="font-size:36px;">📞</span>
+        <div>
+          <span class="count" data-target="24" style="font-size:28px; font-weight:bold; color:#d4af37;">0</span>
+          <p style="margin:2px 0 0 0; color:#ccc;">Customer Support</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= COUNT-UP & FADE-IN SCRIPT ================= -->
+<script>
+// Function to animate numbers
+function animateNumbers() {
+  const left = document.querySelector('.stat-left');
+  const right = document.querySelector('.stat-right');
+  const statsTop = left.getBoundingClientRect().top;
+  const screenPos = window.innerHeight / 1.2;
+
+  if(statsTop < screenPos){
+    // Fade-in image and stats container
+    left.style.opacity = '1';
+    left.style.transform = 'translateY(0)';
+    right.style.opacity = '1';
+    right.style.transform = 'translateY(0)';
+
+    // Animate stat items staggered
+    const items = right.querySelectorAll('.stat-item');
+    items.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        item.style.transition = 'all 0.6s ease';
+        item.style.opacity = '1';
+        item.style.transform = 'translateY(0)';
+
+        // Count-up numbers
+        const countEl = item.querySelector('.count');
+        let target = +countEl.getAttribute('data-target');
+        let current = 0;
+        let increment = target / 100; // increment per frame
+        const counter = setInterval(() => {
+          current += increment;
+          if(current >= target){
+            countEl.innerText = target;
+            clearInterval(counter);
+          } else {
+            countEl.innerText = Math.floor(current);
+          }
+        }, 20); // 20ms per step
+      }, 200 * index);
+    });
+
+    window.removeEventListener('scroll', animateNumbers);
+  }
+}
+
+// Trigger on scroll and load
+window.addEventListener('scroll', animateNumbers);
+window.addEventListener('load', animateNumbers);
+</script>
+
+<!-- ================= RESPONSIVE GRID ================= -->
+<style>
+@media (max-width:768px){
+  #statistics div[style*="display:flex"] {
+    flex-direction:column;
+    gap:30px;
+  }
+  #statistics h2 {
+    text-align:center;
+  }
+  .stat-item {
+    justify-content:center;
+    text-align:center;
+  }
+  .stat-item p {
+    text-align:center;
+  }
+}
+</style>
+<!-- ================= END STATISTICS SECTION ================= -->
+<script>
+const leftImage = document.querySelector("#statistics img");
+leftImage.addEventListener("mouseenter", () => {
+  leftImage.style.transform = "scale(1.05)";
+});
+leftImage.addEventListener("mouseleave", () => {
+  leftImage.style.transform = "scale(1)";
+});
+</script>
+
+<!-- ================= RESPONSIVE GRID ================= -->
+<style>
+@media (max-width:768px){
+  #statistics div[style*="display:flex"] {
+    flex-direction:column;
+    gap:30px;
+  }
+  #statistics h2 {
+    text-align:center;
+  }
+  .stat-item {
+    justify-content:center;
+  }
+  .stat-item p {
+    text-align:center;
+  }
+}
+</style>
+<!-- ================= END STATISTICS SECTION ================= -->
+ 
 </body>
 </html>
