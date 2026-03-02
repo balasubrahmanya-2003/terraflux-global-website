@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terraflux</title>
+<title>TERRAFLUX GLOBAL VENTURES | Home</title>
 
 <style>
+
 /* ===== RESET ===== */
 *{
   margin:0;
@@ -16,7 +17,7 @@
 body{
   font-family:Arial, Helvetica, sans-serif;
   background:#111;
-  padding-top:80px; /* prevent header overlap */
+  padding-top:80px;
 }
 
 /* ===== HEADER ===== */
@@ -24,7 +25,7 @@ header{
   position:fixed;
   top:0;
   width:100%;
-  background:#0a0a0a; /* elephant black */
+  background:#0a0a0a;
   z-index:1000;
   border-bottom:1px solid rgba(212,175,55,0.2);
 }
@@ -46,17 +47,17 @@ header{
 }
 
 .logo img{
-  height:40px; /* fixed logo size */
-  width:auto;
+  height:40px;
 }
 
 .logo span{
   color:#d4af37;
-  font-size:20px;
+  font-size:18px;
   font-weight:bold;
+  white-space:nowrap;
 }
 
-/* ===== DESKTOP LINKS ===== */
+/* ===== NAV LINKS ===== */
 .nav-links{
   display:flex;
   gap:25px;
@@ -99,8 +100,8 @@ header{
   transform:rotate(-45deg) translate(6px,-6px);
 }
 
-/* ===== MOBILE RIGHT-SIDE TRANSPARENT MENU ===== */
-@media (max-width: 900px){
+/* ===== MOBILE MENU ===== */
+@media (max-width:900px){
 
   .nav-links{
     position:fixed;
@@ -108,11 +109,9 @@ header{
     right:-280px;
     width:260px;
     height:100vh;
-
-    background:rgba(10,10,10,0.75);
+    background:rgba(10,10,10,0.8);
     backdrop-filter:blur(12px);
     -webkit-backdrop-filter:blur(12px);
-
     flex-direction:column;
     align-items:flex-start;
     padding:100px 30px;
@@ -152,7 +151,8 @@ header{
 /* ===== HERO SECTION ===== */
 .hero{
   height:100vh;
-  background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+  background:
+  linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
   url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d');
   background-size:cover;
   background-position:center;
@@ -194,7 +194,6 @@ header{
 
 .btn:hover{
   background:white;
-  color:black;
 }
 
 @keyframes fadeUp{
@@ -207,6 +206,7 @@ header{
     transform:translateY(0);
   }
 }
+
 </style>
 </head>
 <body>
@@ -214,17 +214,16 @@ header{
 <header>
   <div class="nav-container">
     <div class="logo">
-      <img src="https://via.placeholder.com/120x40.png?text=Logo" alt="Terraflux Logo">
-      <span>TERRAFLUX</span>
+      <img src="Terraflux Global Venture Pvt Ltd (Logo).jpg.jpeg" alt="Terraflux Logo">
+      <span>TERRAFLUX GLOBAL VENTURES</span>
     </div>
 
     <nav class="nav-links" id="navLinks">
-      <a href="#">Home</a>
-      <a href="#">Services</a>
-      <a href="#">Logistics</a>
-      <a href="#">Warehouse</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="logistics.html">Logistics</a>
+      <a href="warehouse.html">Warehouse</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
     <div class="hamburger" id="hamburger">
@@ -237,20 +236,20 @@ header{
 
 <div class="overlay" id="overlay"></div>
 
-<!-- HERO SECTION -->
 <section class="hero">
   <div class="hero-content">
-    <h1>Powering Global Logistics with Precision & Trust</h1>
+    <h1>Global Logistics & Infrastructure Solutions</h1>
     <p>
-      Terraflux Global Ventures Pvt Ltd delivers integrated logistics,
-      premium import & export services, and secure warehousing solutions
-      designed to move businesses forward with reliability and excellence.
+      Terraflux Global Ventures delivers reliable logistics, warehousing,
+      and infrastructure solutions with efficiency and precision worldwide.
     </p>
-    <a href="#" class="btn">Get Started</a>
+    <a href="contact.html" class="btn">Get In Touch</a>
   </div>
 </section>
 
 <script>
+document.addEventListener("DOMContentLoaded", function(){
+
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
 const overlay = document.getElementById("overlay");
@@ -261,20 +260,84 @@ function closeMenu(){
   overlay.classList.remove("active");
 }
 
-hamburger.addEventListener("click", () => {
+hamburger.addEventListener("click", function(){
   hamburger.classList.toggle("active");
   navLinks.classList.toggle("active");
   overlay.classList.toggle("active");
 });
 
-/* Close when clicking overlay */
 overlay.addEventListener("click", closeMenu);
 
-/* Close when clicking a link */
-document.querySelectorAll(".nav-links a").forEach(link=>{
+document.querySelectorAll(".nav-links a").forEach(function(link){
   link.addEventListener("click", closeMenu);
+});
+
 });
 </script>
 
+<!-- ================= START HERO SECTION ================= -->
+<section id="hero" style="position:relative; width:100%; height:100vh; overflow:hidden;">
+
+  <!-- Slide Images -->
+  <img src="all.jpg" class="hero-slide" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transform:scale(1); transition: transform 8s ease, opacity 1s ease; opacity:1; z-index:2;">
+  <img src="all2.jpg" class="hero-slide" style="position:absolute; top:0; left:100%; width:100%; height:100%; object-fit:cover; transition: left 1s ease, opacity 1s ease; opacity:0; z-index:1;">
+  <img src="all3.jpg" class="hero-slide" style="position:absolute; top:0; left:100%; width:100%; height:100%; object-fit:cover; transition: left 1s ease, opacity 1s ease; opacity:0; z-index:1;">
+  <img src="all4.jpg" class="hero-slide" style="position:absolute; top:0; left:100%; width:100%; height:100%; object-fit:cover; transition: left 1s ease, opacity 1s ease; opacity:0; z-index:1;">
+  <img src="all5.jpg" class="hero-slide" style="position:absolute; top:0; left:100%; width:100%; height:100%; object-fit:cover; transition: left 1s ease, opacity 1s ease; opacity:0; z-index:1;">
+  <img src="all6.jpg" class="hero-slide" style="position:absolute; top:0; left:100%; width:100%; height:100%; object-fit:cover; transition: left 1s ease, opacity 1s ease; opacity:0; z-index:1;">
+
+  <!-- Hero Content -->
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:white; text-align:center; z-index:3;">
+    <h1 style="font-size:48px; color:#d4af37; margin-bottom:20px;">Welcome to Terraflux</h1>
+    <p style="font-size:18px; line-height:1.6; max-width:700px; margin:auto;">Powering Global Logistics with Precision & Trust</p>
+  </div>
+</section>
+
+<script>
+// ================= HERO SLIDE SCRIPT =================
+let slides = document.querySelectorAll("#hero .hero-slide");
+let current = 0;
+let total = slides.length;
+
+// Function to reset z-index and opacity
+function resetSlides(){
+  slides.forEach((slide, index)=>{
+    slide.style.opacity = 0;
+    slide.style.left = "100%";
+    slide.style.zIndex = 1;
+    slide.style.transform = "scale(1)";
+  });
+}
+
+// Initial first image zoom effect
+slides[0].style.transform = "scale(1.1)";
+slides[0].style.opacity = 1;
+
+// Function to show next slide
+function nextSlide(){
+  // Reset previous slide
+  slides[current].style.opacity = 0;
+  slides[current].style.left = "-100%";
+  slides[current].style.zIndex = 1;
+  slides[current].style.transform = "scale(1)";
+
+  // Move to next
+  current = (current + 1) % total;
+
+  slides[current].style.opacity = 1;
+  slides[current].style.left = "0";
+  slides[current].style.zIndex = 2;
+
+  // Zoom only first slide again if it cycles back
+  if(current===0){
+    slides[current].style.transform = "scale(1.1)";
+  }
+}
+
+// Change slide every 5 seconds
+setInterval(nextSlide, 5000);
+// ================= END HERO SLIDE SCRIPT =================
+</script>
+<!-- ================= END HERO SECTION ================= -->
 </body>
 </html>
