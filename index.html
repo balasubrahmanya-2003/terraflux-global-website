@@ -698,7 +698,130 @@ leftImage.addEventListener("mouseleave", () => {
 </style>
 <!-- ================= END CONTINUOUS MICROSOFT LOGO MARQUEE ================= -->
 
+<!-- ================= START RECENT PROJECTS SECTION ================= -->
+<section id="recent-projects" style="padding:80px 20px; background:#111; color:white;">
+  <h2 style="text-align:center; font-size:36px; color:#d4af37; margin-bottom:50px;">Recent Projects</h2>
 
+  <div class="projects-container" style="
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
+  ">
+
+    <!-- Project: Global Warehouse Expansion (float left) -->
+    <div class="project-card animate-left" style="background:#1a1a1a; border-radius:12px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+      <h3 style="font-size:24px; margin-bottom:10px;">Global Warehouse Expansion</h3>
+      <p style="color:#ccc; margin-bottom:15px;">Expanded storage capacity across 3 countries to support growing logistics needs.</p>
+      <button onclick="alert('Global Warehouse Expansion Details')" class="read-more-btn" style="
+        padding:10px 20px; border:none; background:#d4af37; color:black; font-weight:bold; border-radius:4px; cursor:pointer; transition:0.3s;
+      ">Read More →</button>
+    </div>
+
+    <!-- Project: Smart Fleet Management (float top) -->
+    <div class="project-card animate-top" style="background:#1a1a1a; border-radius:12px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+      <h3 style="font-size:24px; margin-bottom:10px;">Smart Fleet Management</h3>
+      <p style="color:#ccc; margin-bottom:15px;">Implemented AI-based fleet tracking and optimization for faster delivery.</p>
+      <button onclick="alert('Smart Fleet Management Details')" class="read-more-btn" style="
+        padding:10px 20px; border:none; background:#d4af37; color:black; font-weight:bold; border-radius:4px; cursor:pointer; transition:0.3s;
+      ">Read More →</button>
+    </div>
+
+    <!-- Project: International Shipping Portal (float right) -->
+    <div class="project-card animate-right" style="background:#1a1a1a; border-radius:12px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+      <h3 style="font-size:24px; margin-bottom:10px;">International Shipping Portal</h3>
+      <p style="color:#ccc; margin-bottom:15px;">Streamlined import/export operations through an online portal.</p>
+      <button onclick="alert('International Shipping Portal Details')" class="read-more-btn" style="
+        padding:10px 20px; border:none; background:#d4af37; color:black; font-weight:bold; border-radius:4px; cursor:pointer; transition:0.3s;
+      ">Read More →</button>
+    </div>
+
+    <!-- Project: Cold Chain Logistics Upgrade (float left) -->
+    <div class="project-card animate-left" style="background:#1a1a1a; border-radius:12px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+      <h3 style="font-size:24px; margin-bottom:10px;">Cold Chain Logistics Upgrade</h3>
+      <p style="color:#ccc; margin-bottom:15px;">Enhanced refrigerated logistics for perishable goods across regions.</p>
+      <button onclick="alert('Cold Chain Logistics Upgrade Details')" class="read-more-btn" style="
+        padding:10px 20px; border:none; background:#d4af37; color:black; font-weight:bold; border-radius:4px; cursor:pointer; transition:0.3s;
+      ">Read More →</button>
+    </div>
+
+    <!-- Project: E-commerce Rapid Delivery (float top) -->
+    <div class="project-card animate-top" style="background:#1a1a1a; border-radius:12px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+      <h3 style="font-size:24px; margin-bottom:10px;">E-commerce Rapid Delivery</h3>
+      <p style="color:#ccc; margin-bottom:15px;">Integrated 24-hour delivery services for online retail clients.</p>
+      <button onclick="alert('E-commerce Rapid Delivery Details')" class="read-more-btn" style="
+        padding:10px 20px; border:none; background:#d4af37; color:black; font-weight:bold; border-radius:4px; cursor:pointer; transition:0.3s;
+      ">Read More →</button>
+    </div>
+
+    <!-- Project: Supply Chain Consulting (float right) -->
+    <div class="project-card animate-right" style="background:#1a1a1a; border-radius:12px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+      <h3 style="font-size:24px; margin-bottom:10px;">Supply Chain Consulting</h3>
+      <p style="color:#ccc; margin-bottom:15px;">Advisory services for optimizing global supply chain operations.</p>
+      <button onclick="alert('Supply Chain Consulting Details')" class="read-more-btn" style="
+        padding:10px 20px; border:none; background:#d4af37; color:black; font-weight:bold; border-radius:4px; cursor:pointer; transition:0.3s;
+      ">Read More →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PROJECTS ANIMATION & HOVER ================= -->
+<style>
+/* Read More button hover effect */
+.read-more-btn:hover {
+  background:black;
+  color:#d4af37;
+  transform: scale(1.05);
+}
+
+/* Initial animation state */
+.animate-left, .animate-right, .animate-top {
+  opacity:0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+/* Direction specific offsets */
+.animate-left { transform: translateX(-50px); }
+.animate-right { transform: translateX(50px); }
+.animate-top { transform: translateY(-50px); }
+
+/* Animate when in view */
+.animate-left.in-view, .animate-right.in-view, .animate-top.in-view {
+  opacity:1;
+  transform: translateX(0) translateY(0);
+}
+
+/* Card hover effects */
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(212,175,55,0.5);
+  border: 1px solid #d4af37;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media(max-width:768px){
+  .projects-container { gap:20px; }
+  h2 { font-size:28px; }
+}
+</style>
+
+<!-- ================= INTERSECTION OBSERVER TO TRIGGER ANIMATION ================= -->
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.animate-left, .animate-right, .animate-top').forEach(el => {
+  observer.observe(el);
+});
+</script>
+<!-- ================= END RECENT PROJECTS SECTION ================= -->
  <!-- ================= START CONTACT / CTA SECTION ================= -->
 <section id="contact" style="padding:80px 20px; background:#000; color:white;">
 
@@ -780,6 +903,10 @@ window.addEventListener('load', animateContact);
   transform:scale(1.05);
 }
 </style>
+<!-- ================= FOOTER COPYRIGHT ================= -->
+<div style="text-align:center; padding:15px 0; border-top:1px solid #333; color:#ccc; font-size:14px; background:#000;">
+  &copy; 2026 Terraflux Global Ventures Pvt Ltd. All Rights Reserved.
+</div>
 <!-- ================= END CONTACT / CTA SECTION ================= -->
 </body>
 </html>
