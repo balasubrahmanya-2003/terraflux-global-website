@@ -1,174 +1,166 @@
 <style>
 
-/* ===== GLOBAL RESET ===== */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+/* ===== BASE RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    overflow-x:hidden;
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===== NAVBAR ===== */
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    padding:18px 5%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:transparent;
-    transition:0.3s ease;
-    z-index:1000;
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  transition: 0.3s ease;
+  z-index: 1000;
 }
 
-nav.scrolled{
-    background:#000;
-    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+header.scrolled {
+  background: #000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
-.logo{
-    color:#d4af37;
-    font-size:clamp(18px, 2vw, 22px);
-    font-weight:bold;
-    letter-spacing:1px;
+/* ===== NAV CONTAINER ===== */
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* ===== DESKTOP LINKS ===== */
-.nav-links{
-    display:flex;
-    gap:clamp(20px, 2vw, 35px);
+/* ===== LOGO ===== */
+.logo {
+  color: #d4af37;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.nav-links a{
-    text-decoration:none;
-    color:white;
-    font-weight:500;
-    font-size:15px;
-    transition:0.3s;
+/* ===== NAV LINKS ===== */
+.nav-links {
+  display: flex;
+  gap: 35px;
 }
 
-.nav-links a:hover{
-    color:#d4af37;
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #d4af37;
 }
 
 /* ===== HAMBURGER ===== */
-.hamburger{
-    display:none;
-    flex-direction:column;
-    gap:5px;
-    cursor:pointer;
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
 }
 
-.hamburger span{
-    width:25px;
-    height:3px;
-    background:white;
-    transition:0.3s ease;
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: white;
+  transition: 0.3s;
 }
 
-/* Animate to X */
-.hamburger.active span:nth-child(1){
-    transform:rotate(45deg) translate(5px,5px);
+/* Animate */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
 }
-.hamburger.active span:nth-child(2){
-    opacity:0;
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
 }
-.hamburger.active span:nth-child(3){
-    transform:rotate(-45deg) translate(6px,-6px);
-}
-
-/* ===== TABLET & MOBILE ===== */
-@media(max-width:900px){
-
-    nav{
-        padding:15px 6%;
-    }
-
-    .nav-links{
-        position:absolute;
-        top:100%;
-        left:0;
-        width:100%;
-        background:#000;
-        flex-direction:column;
-        align-items:center;
-        gap:20px;
-        padding:20px 0;
-        display:none;
-    }
-
-    .nav-links.active{
-        display:flex;
-        animation:fadeDown 0.3s ease;
-    }
-
-    .hamburger{
-        display:flex;
-    }
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
-@keyframes fadeDown{
-    from{
-        opacity:0;
-        transform:translateY(-10px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #000;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 25px 0;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }
 
 </style>
 
 
-<nav id="navbar">
+<header id="header">
+  <div class="nav-container">
+
     <div class="logo">TERRAFLUX</div>
 
-    <div class="nav-links" id="navLinks">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">About</a>
-        <a href="warehouse.html">Warehouse</a>
-        <a href="contact.html">Contact</a>
-    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="warehouse.html">Warehouse</a>
+      <a href="contact.html">Contact</a>
+    </nav>
 
     <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-</nav>
 
+  </div>
+</header>
 
 <script>
 
-/* Scroll Background */
+/* Scroll Effect */
 window.addEventListener("scroll", function(){
-    const navbar = document.getElementById("navbar");
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
+  document.getElementById("header")
+    .classList.toggle("scrolled", window.scrollY > 50);
 });
 
-/* Toggle Menu */
+/* Toggle */
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
 
 hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navLinks.classList.toggle("active");
+  hamburger.classList.toggle("active");
+  navLinks.classList.toggle("active");
 });
 
-/* Auto Close When Link Clicked */
-document.querySelectorAll(".nav-links a").forEach(link=>{
-    link.addEventListener("click",()=>{
-        hamburger.classList.remove("active");
-        navLinks.classList.remove("active");
-    });
+/* Auto close */
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navLinks.classList.remove("active");
+  });
 });
 
 </script>
