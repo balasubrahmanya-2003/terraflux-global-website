@@ -16,7 +16,7 @@
 body{
   font-family:Arial, Helvetica, sans-serif;
   background:#111;
-  padding-top:80px; /* Prevent header overlap */
+  padding-top:80px; /* prevent header overlap */
 }
 
 /* ===== HEADER ===== */
@@ -24,7 +24,7 @@ header{
   position:fixed;
   top:0;
   width:100%;
-  background:#0a0a0a;
+  background:#0a0a0a; /* elephant black */
   z-index:1000;
   border-bottom:1px solid rgba(212,175,55,0.2);
 }
@@ -40,6 +40,17 @@ header{
 
 /* ===== LOGO ===== */
 .logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo img{
+  height:40px; /* fixed logo size */
+  width:auto;
+}
+
+.logo span{
   color:#d4af37;
   font-size:20px;
   font-weight:bold;
@@ -48,7 +59,7 @@ header{
 /* ===== DESKTOP LINKS ===== */
 .nav-links{
   display:flex;
-  gap:35px;
+  gap:25px;
 }
 
 .nav-links a{
@@ -98,7 +109,6 @@ header{
     width:260px;
     height:100vh;
 
-    /* Transparent Glass Effect */
     background:rgba(10,10,10,0.75);
     backdrop-filter:blur(12px);
     -webkit-backdrop-filter:blur(12px);
@@ -106,7 +116,7 @@ header{
     flex-direction:column;
     align-items:flex-start;
     padding:100px 30px;
-    gap:30px;
+    gap:25px;
     transition:0.4s ease;
     box-shadow:-5px 0 30px rgba(0,0,0,0.4);
   }
@@ -203,13 +213,17 @@ header{
 
 <header>
   <div class="nav-container">
-    <div class="logo">TERRAFLUX</div>
+    <div class="logo">
+      <img src="https://via.placeholder.com/120x40.png?text=Logo" alt="Terraflux Logo">
+      <span>TERRAFLUX</span>
+    </div>
 
     <nav class="nav-links" id="navLinks">
       <a href="#">Home</a>
       <a href="#">Services</a>
-      <a href="#">About</a>
+      <a href="#">Logistics</a>
       <a href="#">Warehouse</a>
+      <a href="#">About</a>
       <a href="#">Contact</a>
     </nav>
 
@@ -253,10 +267,10 @@ hamburger.addEventListener("click", () => {
   overlay.classList.toggle("active");
 });
 
-/* Close menu when clicking outside (overlay) */
+/* Close when clicking overlay */
 overlay.addEventListener("click", closeMenu);
 
-/* Close menu when clicking a link */
+/* Close when clicking a link */
 document.querySelectorAll(".nav-links a").forEach(link=>{
   link.addEventListener("click", closeMenu);
 });
