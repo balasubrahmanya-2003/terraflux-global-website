@@ -631,6 +631,155 @@ leftImage.addEventListener("mouseleave", () => {
 }
 </style>
 <!-- ================= END STATISTICS SECTION ================= -->
- 
+ <!-- ================= START CONTINUOUS MICROSOFT LOGO MARQUEE ================= -->
+<section id="partners" style="padding:80px 20px; background:#000; color:white; overflow:hidden;">
+  <h2 style="text-align:center; font-size:36px; color:#d4af37; margin-bottom:50px;">
+    Our Partners
+  </h2>
+
+  <!-- MARQUEE CONTAINER -->
+  <div class="marquee-container" style="overflow:hidden; width:100%;">
+    <div class="marquee-track">
+      <!-- Original logos -->
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:60px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:60px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:60px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:60px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:60px;">
+      <!-- Duplicate logos for seamless loop -->
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:60px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:60px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:60px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:60px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="height:60px;">
+    </div>
+    
+  </div>
+</section>
+
+<!-- ================= CONTINUOUS MARQUEE ANIMATION ================= -->
+<style>
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+}
+
+/* Continuous smooth loop */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Half of total width (since we duplicated logos) */
+}
+
+/* Pause on hover (optional) */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Responsive for mobile */
+@media (max-width:768px){
+  .marquee-track img {
+    height:40px;
+  }
+  h2 {
+    font-size:28px;
+  }
+  .marquee-track {
+    gap:30px;
+  }
+}
+</style>
+<!-- ================= END CONTINUOUS MICROSOFT LOGO MARQUEE ================= -->
+
+
+ <!-- ================= START CONTACT / CTA SECTION ================= -->
+<section id="contact" style="padding:80px 20px; background:#000; color:white;">
+
+  <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; gap:40px; align-items:center;">
+
+    <!-- LEFT COLUMN: CONTACT INFO -->
+    <div style="flex:1 1 500px; min-width:280px; opacity:0; transform:translateY(30px); transition:all 1s ease;" class="contact-left">
+      <h2 style="font-size:36px; color:#d4af37; margin-bottom:20px;">Get in Touch</h2>
+      <p style="color:#ccc; margin-bottom:30px;">
+        Have a question or want to start your logistics journey with us? Fill out the form or reach out directly.
+      </p>
+
+      <p style="font-size:18px; margin:10px 0;">
+        🏢 <strong>Address:</strong> #22/23, 2nd Floor, TR Plaza, Double Road, Rajarajeshwari Nagar, Bengaluru – 560098, Karnataka, India
+      </p>
+      <p style="font-size:18px; margin:10px 0;">
+        📞 <strong>Phone:</strong> 9663938889
+      </p>
+      <p style="font-size:18px; margin:10px 0;">
+        ✉️ <strong>Email:</strong> ContactUs@terrafluxgv.com
+      </p>
+    </div>
+
+    <!-- RIGHT COLUMN: CONTACT FORM -->
+    <div style="flex:1 1 500px; min-width:280px; opacity:0; transform:translateY(30px); transition:all 1s ease;" class="contact-right">
+      <form style="display:flex; flex-direction:column; gap:20px;">
+        <input type="text" placeholder="Your Name" style="padding:12px 15px; border-radius:6px; border:none; outline:none;">
+        <input type="email" placeholder="Your Email" style="padding:12px 15px; border-radius:6px; border:none; outline:none;">
+        <textarea placeholder="Your Message" rows="5" style="padding:12px 15px; border-radius:6px; border:none; outline:none;"></textarea>
+        <button type="submit" style="padding:12px 20px; background:#d4af37; color:#000; font-weight:bold; border:none; border-radius:6px; cursor:pointer; transition:all 0.3s;">
+          Send Message
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= ANIMATION SCRIPT ================= -->
+<script>
+function animateContact() {
+  const left = document.querySelector('.contact-left');
+  const right = document.querySelector('.contact-right');
+  const sectionTop = left.getBoundingClientRect().top;
+  const screenPos = window.innerHeight / 1.2;
+
+  if(sectionTop < screenPos){
+    left.style.opacity = '1';
+    left.style.transform = 'translateY(0)';
+    right.style.opacity = '1';
+    right.style.transform = 'translateY(0)';
+    window.removeEventListener('scroll', animateContact);
+  }
+}
+
+window.addEventListener('scroll', animateContact);
+window.addEventListener('load', animateContact);
+</script>
+
+<!-- ================= RESPONSIVE STYLING ================= -->
+<style>
+@media (max-width:768px){
+  #contact div[style*="display:flex"] {
+    flex-direction:column;
+    gap:30px;
+  }
+  #contact h2 {
+    text-align:center;
+  }
+  #contact form input,
+  #contact form textarea,
+  #contact form button {
+    width:100%;
+  }
+}
+#contact button:hover{
+  background:#fff;
+  color:#000;
+  transform:scale(1.05);
+}
+</style>
+<!-- ================= END CONTACT / CTA SECTION ================= -->
 </body>
 </html>
